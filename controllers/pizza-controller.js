@@ -41,6 +41,7 @@ const pizzaController = {
     },
 
     // Update pizza by id
+    /* With this .findOneAndUpdate() method, Mongoose finds a single document we want to update, then updates it and returns the updated document.*/
     // ================================================
     updatePizza({ params, body }, res) {
         Pizza.findOneAndUpdate({ _id: params.id }, body, { new: true })
@@ -53,6 +54,20 @@ const pizzaController = {
             })
             .catch(err => res.status(400).json(err));
     },
+
+    // Delete pizza
+    // ================================================
+    deletePizza({ params }, res) {
+        Pizza.findOneAndDelete({ _id: params.id })
+            .then(dbPizzaData => {
+                if (!dbPizzaData) {
+                    res.status(404).json({ message: 'No pizza found with this id!' });
+                    return;
+                }
+                res.json(dbPizzaData);
+            })
+            .catch(err => res.status(400).json(err));
+    }
 }
 
 //export module
