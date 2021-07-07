@@ -22,7 +22,16 @@ const PizzaSchema = new Schema({
         default: 'Large'
     },
     //Pizza Toppings will use Array Datatype
-    toppings: []
+    toppings: [],
+
+    //association to the Comments model
+    comments: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Comment'
+            // the ref property tells the Pizza model which document to search to find the right comments
+        }
+    ]
 });
 
 // create the Pizza model using the PizzaSchema
