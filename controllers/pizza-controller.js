@@ -6,6 +6,13 @@ const pizzaController = {
     // ================================================
     getAllPizza(req, res) {
         Pizza.find({})
+            //populate comments
+            .populate({
+                path: 'comments',
+                select: '-__v'
+                // The minus sign - in front of the field `__v` indicates that we don't want it to be returned.
+            })
+            .select('-__v')
             .then(dbPizzaData => res.json(dbPizzaData))
             .catch(err => {
                 console.log(err);
