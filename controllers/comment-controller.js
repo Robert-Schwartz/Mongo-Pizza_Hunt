@@ -50,6 +50,6 @@ const commentController = {
 };
 
 // export controller
-module.export = commentController;
+module.exports = commentController;
 
 
