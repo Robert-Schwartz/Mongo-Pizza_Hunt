@@ -13,6 +13,8 @@ const pizzaController = {
                 // The minus sign - in front of the field `__v` indicates that we don't want it to be returned.
             })
             .select('-__v')
+            .sort({ _id: -1 })
+            // sort in DESC order by the _id value
             .then(dbPizzaData => res.json(dbPizzaData))
             .catch(err => {
                 console.log(err);
@@ -24,8 +26,13 @@ const pizzaController = {
     // ================================================
     getPizzaById({ params }, res) {
         Pizza.findOne({ _id: params.id })
+            .populate({
+                path: 'comments',
+                select: '-__v'
+            })
+            .select('-__v')
             .then(dbPizzaData => {
-                // If no pizza is found, send 404
+                // if no Pizza is found, send 404
                 if (!dbPizzaData) {
                     res.status(404).json({ message: 'No pizza found with this id!' });
                     return;
