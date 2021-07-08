@@ -4,7 +4,7 @@ const { Pizza } = require('../models');
 const pizzaController = {
     // Get all pizzas
     // ================================================
-    getAllPizza(req, res) {
+getAllPizza(req, res) {
         Pizza.find({})
             //populate comments
             .populate({
