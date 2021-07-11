@@ -9,8 +9,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-app.use(require('./routes'));
-
 //connect to Mongoose DB
 //MongoDB will find and connect to the database if it exists or create the database if it doesn't.
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/pizza-hunt', {
@@ -18,6 +16,9 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/pizza-hunt', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
+
+// connect to DB before connecting to routes
+app.use(require('./routes'));
 
 // Use this to log mongo queries being executed!
 mongoose.set('debug', true);

@@ -14,6 +14,7 @@ const {
 // /api/pizzas
 // ============================================
 router
+// /api/pizzas/
 .route('/')
 //provide the name of the controller method as the callback
     .get(getAllPizza)
@@ -22,7 +23,8 @@ router
 // Set up GET one, PUT, and DELETE at /api/pizzas/:id
 // ============================================
 router
-    .route('/:id')
+// /api/pizzas/:id
+.route('/:id')
     .get(getPizzaById)
     .put(updatePizza)
     .delete(deletePizza);

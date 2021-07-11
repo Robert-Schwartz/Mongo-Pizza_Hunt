@@ -8,7 +8,9 @@ const {
 } = require('../../controllers/comment-controller');
 
 // /api/comments/<pizzaId>
-router.route('/:pizzaId').post(addComment);
+router
+.route('/:pizzaId')
+    .post(addComment);
 
 // /api/comments/<pizzaId>/<commentId>
 router
