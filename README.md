@@ -19,7 +19,7 @@ A website designed for a Pizza Company where users can view a list of pizza crea
 - [License](#license)
 
 ## Technologies
-his project was built using HTML, CSS, Javascript, Bootstrap styling, as well as:
+This project was built using HTML, CSS, Javascript, Bootstrap styling, as well as:
 
 * Node
 * NoSQL
